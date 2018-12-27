@@ -5,6 +5,11 @@ div.row {
 	text-align: center;
 }
 
+div.row.title {
+	background-color: lightgray;
+	font-size: 18px;
+}
+
 div.button {
 	cursor: pointer;
 }
