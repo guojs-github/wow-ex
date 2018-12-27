@@ -56,6 +56,28 @@ var basics = [
 	'rotateInUpLeft'
 ]
 
+$.fn.extend({
+	animateCss: function (animationName) {
+		console.log('Animation demo')
+		console.log('animation name:' + animationName)
+		
+		if ((typeof(animationName) != 'string') || (animationName.trim().length <=0)) {
+			console.log('invalid animation name')
+			return
+		}
+		
+		this.addClass(animationName)
+			.addClass('animated')
+			.one(
+				'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
+				function () {
+					$(this).removeClass(animationName)
+						.removeClass('animated')
+				}
+			)
+	}
+})
+
 function showBasic () {
 	console.log('show basic effects.')
 	
@@ -78,27 +100,8 @@ function showBasic () {
 		basicsEl.append('<div id="' + basics[i] + '" class="demo row button"> 欢迎使用wow.js(' + basics[i] +')</div>')
 		$('#' + basics[i] + '.demo').css('display', 'none') // 初始化的时候隐藏
 		$('#' + basics[i] + '.demo').click(function (e) { // 点击演示
-			test(e.currentTarget.id) 
+			$(this).animateCss(e.currentTarget.id) 
 		})
 	}	
 }
 
-function test (name) {
-	console.log('test animation')
-	console.log('animation name:' + name)
-	
-	if ((typeof(name) != 'string') || (name.trim().length <=0)) {
-		console.log('invalid animation name')
-		return
-	}
-	
-	$('#' + name + '.demo').addClass(name)
-		.addClass('animated')
-		.one(
-			'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', 
-			function () {
-				$(this).removeClass(name)
-					.removeClass('animated')
-			}
-		)
-}
