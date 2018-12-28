@@ -20,12 +20,28 @@
 				基本效果演示
 			</div>
 		</div>
+		<div class='adavance section'>
+			<div class='row title'>
+				设置项测试
+			</div>
+			<div class="row button wow flipInY" data-wow-duration='5s'> 欢迎使用wow.js(延长动画时长)</div>
+			<div class="row button wow flipInY" data-wow-delay='3s'> 欢迎使用wow.js(延迟展示动画)</div>
+			<div class="row button wow flipInY" data-wow-offset='150'> 欢迎使用wow.js(指定距离浏览器底部多少时开始动画)</div>
+			<div class="row button wow flipInY" data-wow-iteration='10'> 欢迎使用wow.js(连续多次播放)</div>
+		</div>
 		
 		<!--script-->
 		<script src="js/jquery-1.7.2.min.js"></script>
 		<script src="js/wow.js"></script>
         <script>
-			new WOW().init();
+			var wow = new WOW({
+				boxClass: 'button', // 其实就是，匹配到哪些元素，一开始是要执行动画的, 如果匹配不到就不会执行
+				animateClass: 'animated', // animate css对应的动画类名
+				offset: 100, // 与data-wow-offset效果相同，区别是全局性的设置
+				mobile: false, // 手机上是否自动播放动画
+				live: true // 异步加载的内容是否有效？如果false，会导致后续js动态添加的动画无法正确显示
+			});
+			wow.init();
         </script>
 
 		<script src="js/index.js"></script>

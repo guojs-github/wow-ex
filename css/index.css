@@ -6,7 +6,8 @@ div.row {
 }
 
 div.row.title {
-	background-color: lightgray;
+	color: white;
+	background-color: gray;
 	font-size: 18px;
 }
 
